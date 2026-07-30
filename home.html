@@ -37,7 +37,29 @@
     color: var(--text);
     background: var(--bg);
   }
-  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; position: relative; }
+  body { overflow-x: hidden; }
+
+  .decor {
+    position: absolute;
+    width: 120px;
+    height: auto;
+    pointer-events: none;
+    opacity: 0.95;
+  }
+  .decor-hospital {
+    top: -8px;
+    right: -60px;
+    transform: rotate(7deg);
+  }
+  .decor-school {
+    bottom: -10px;
+    left: -60px;
+    transform: rotate(-7deg);
+  }
+  @media (max-width: 900px) {
+    .decor { display: none; }
+  }
 
   /* Hero */
   .hero {
@@ -227,6 +249,7 @@
 
   <section>
     <div class="wrap">
+      <img class="decor decor-hospital" src="screenshots/Design-02.png" alt="" aria-hidden="true">
       <h2>できること</h2>
       <div class="features">
         <div class="feature feature-wide">
@@ -266,6 +289,7 @@
 
   <section class="alt">
     <div class="wrap">
+      <img class="decor decor-school" src="screenshots/Design-03.png" alt="" aria-hidden="true">
       <h2>安心して使える理由</h2>
       <div class="points">
         <div class="point dad">
