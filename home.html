@@ -63,17 +63,20 @@
     left: -50px;
     transform: rotate(9deg);
   }
+  .feature-share {
+    position: relative;
+  }
   .decor-baby {
+    width: 100px;
+    top: 50%;
+    right: -160px;
+    transform: translateY(-50%) rotate(-6deg);
+  }
+  .decor-flower {
     width: 100px;
     bottom: -16px;
     right: -56px;
     transform: rotate(-8deg);
-  }
-  .decor-flower {
-    width: 80px;
-    top: -6px;
-    right: -50px;
-    transform: rotate(10deg);
   }
   @media (max-width: 900px) {
     .decor { display: none; }
@@ -297,7 +300,8 @@
           <h3>聞きたいことメモ</h3>
           <p>担任の先生や病院の先生に聞いておきたいことを、忘れないうちにメモ。</p>
         </div>
-        <div class="feature">
+        <div class="feature feature-share">
+          <img class="decor decor-baby" src="screenshots/Design-04.png" alt="" aria-hidden="true">
           <div class="shot">
             <img src="screenshots/screen-share.png" alt="共有画面">
           </div>
@@ -334,7 +338,7 @@
 
   <section class="cta">
     <div class="wrap">
-      <img class="decor decor-baby" src="screenshots/Design-04.png" alt="" aria-hidden="true">
+      <img class="decor decor-flower" src="screenshots/Design-06.png" alt="" aria-hidden="true">
       <h2>こそだてバトンをはじめる</h2>
       <div class="cta-links">
         <a class="secondary" href="./index.html">サポート・よくある質問</a>
@@ -345,11 +349,8 @@
   </section>
 
   <footer>
-    <div class="wrap">
-      <img class="decor decor-flower" src="screenshots/Design-06.png" alt="" aria-hidden="true">
-      <p>feat.Entertainment合同会社</p>
-      <p><a href="mailto:feat.entertainment.llc@gmail.com">feat.entertainment.llc@gmail.com</a></p>
-    </div>
+    <p>feat.Entertainment合同会社</p>
+    <p><a href="mailto:feat.entertainment.llc@gmail.com">feat.entertainment.llc@gmail.com</a></p>
   </footer>
 
 </body>
