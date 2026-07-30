@@ -57,6 +57,22 @@
     left: -60px;
     transform: rotate(-7deg);
   }
+  .decor-card {
+    border-radius: 16px;
+    border: 1px solid var(--border);
+  }
+  .decor-sun {
+    width: 90px;
+    top: 4px;
+    left: -50px;
+    transform: rotate(9deg);
+  }
+  .decor-baby {
+    width: 100px;
+    bottom: -16px;
+    right: -56px;
+    transform: rotate(-8deg);
+  }
   @media (max-width: 900px) {
     .decor { display: none; }
   }
@@ -239,12 +255,15 @@
 <body>
 
   <div class="hero">
-    <img class="icon" src="icon.png" alt="こそだてバトン アイコン">
-    <h1>こそだてバトン</h1>
-    <p class="tagline">ママが不在の「もしも」に、パパが迷わず対応できる共有アプリ。</p>
-    <p class="desc">子どもの情報カード・持ち物チェックリスト・聞きたいことメモを事前に用意しておけば、急な体調不良や通院対応も、あわてず引き継げます。</p>
+    <div class="wrap">
+      <img class="decor decor-card decor-sun" src="screenshots/Design-05.png" alt="" aria-hidden="true">
+      <img class="icon" src="icon.png" alt="こそだてバトン アイコン">
+      <h1>こそだてバトン</h1>
+      <p class="tagline">ママが不在の「もしも」に、パパが迷わず対応できる共有アプリ。</p>
+      <p class="desc">子どもの情報カード・持ち物チェックリスト・聞きたいことメモを事前に用意しておけば、急な体調不良や通院対応も、あわてず引き継げます。</p>
 
-    <img class="family" src="screenshots/Design-01.png" alt="パパ・ママ・子どものイラスト">
+      <img class="family" src="screenshots/Design-01.png" alt="パパ・ママ・子どものイラスト">
+    </div>
   </div>
 
   <section>
@@ -313,6 +332,7 @@
 
   <section class="cta">
     <div class="wrap">
+      <img class="decor decor-card decor-baby" src="screenshots/Design-04.png" alt="" aria-hidden="true">
       <h2>こそだてバトンをはじめる</h2>
       <div class="cta-links">
         <a class="secondary" href="./index.html">サポート・よくある質問</a>
