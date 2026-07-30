@@ -67,9 +67,19 @@
 
   /* Section headings */
   h2 {
-    font-size: 1.4rem;
+    font-size: 1.5rem;
+    font-weight: 700;
     text-align: center;
-    margin: 0 0 32px;
+    margin: 0 0 28px;
+  }
+  h2::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 4px;
+    margin: 12px auto 0;
+    background: var(--blue);
+    border-radius: 999px;
   }
   section { padding: 48px 0; }
   section.alt { background: rgba(10,126,164,0.05); }
@@ -94,11 +104,18 @@
     .features { grid-template-columns: 1fr; }
     .feature-wide { grid-column: span 1; }
   }
+  .shot {
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 14px;
+    margin-bottom: 18px;
+  }
   .feature img {
+    display: block;
     width: 100%;
     max-width: 220px;
-    border-radius: 16px;
-    margin-bottom: 16px;
+    margin: 0 auto;
+    border-radius: 12px;
     border: 1px solid var(--border);
   }
   .feature-image-pair {
@@ -109,15 +126,14 @@
   .feature-image-pair img {
     width: 100%;
     max-width: 220px;
-    margin-bottom: 16px;
   }
   .feature h3 {
     margin: 0 0 8px;
-    font-size: 1.05rem;
+    font-size: 1.1rem;
   }
   .feature p {
     margin: 0;
-    font-size: 0.92rem;
+    font-size: 0.95rem;
     color: var(--text-sub);
   }
 
@@ -143,8 +159,8 @@
   }
   .point.dad .badge { background: rgba(10,126,164,0.15); color: var(--blue); }
   .point.mom .badge { background: rgba(242,153,74,0.18); color: var(--orange); }
-  .point h3 { margin: 0 0 8px; font-size: 1.02rem; }
-  .point p { margin: 0; font-size: 0.92rem; color: var(--text-sub); }
+  .point h3 { margin: 0 0 8px; font-size: 1.05rem; }
+  .point p { margin: 0; font-size: 0.95rem; color: var(--text-sub); }
 
   /* CTA */
   .cta {
@@ -203,25 +219,33 @@
       <h2>できること</h2>
       <div class="features">
         <div class="feature feature-wide">
-          <div class="feature-image-pair">
-            <img src="screenshots/screen-card.png" alt="子どもの情報カード一覧画面">
-            <img src="screenshots/screen-card-detail.png" alt="子どもの情報カード詳細画面">
+          <div class="shot">
+            <div class="feature-image-pair">
+              <img src="screenshots/screen-card.png" alt="子どもの情報カード一覧画面">
+              <img src="screenshots/screen-card-detail.png" alt="子どもの情報カード詳細画面">
+            </div>
           </div>
           <h3>情報カード</h3>
           <p>血液型・アレルギー・服薬・かかりつけ病院(Googleマップリンク付き)などを事前登録し、ワンタップで一覧表示。</p>
         </div>
         <div class="feature">
-          <img src="screenshots/screen-checklist.png" alt="持ち物チェックリスト画面">
+          <div class="shot">
+            <img src="screenshots/screen-checklist.png" alt="持ち物チェックリスト画面">
+          </div>
           <h3>持ち物チェックリスト</h3>
           <p>母子手帳・お薬手帳など、病院に行く時に忘れがちな持ち物と場所を確認。</p>
         </div>
         <div class="feature">
-          <img src="screenshots/screen-memo.png" alt="聞きたいことメモ画面">
+          <div class="shot">
+            <img src="screenshots/screen-memo.png" alt="聞きたいことメモ画面">
+          </div>
           <h3>聞きたいことメモ</h3>
           <p>担任の先生や病院の先生に聞いておきたいことを、忘れないうちにメモ。</p>
         </div>
         <div class="feature">
-          <img src="screenshots/screen-share.png" alt="共有画面">
+          <div class="shot">
+            <img src="screenshots/screen-share.png" alt="共有画面">
+          </div>
           <h3>共有</h3>
           <p>登録した情報はパスコード付きの暗号化データとして、LINEでコピー&amp;ペースト共有。</p>
         </div>
