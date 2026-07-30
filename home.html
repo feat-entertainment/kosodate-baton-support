@@ -77,7 +77,7 @@
   /* Feature grid with phone screenshots */
   .features {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
     gap: 28px;
   }
   .feature {
@@ -86,6 +86,13 @@
     padding: 20px;
     text-align: center;
     border: 1px solid var(--border);
+  }
+  .feature-wide {
+    grid-column: span 2;
+  }
+  @media (max-width: 700px) {
+    .features { grid-template-columns: 1fr; }
+    .feature-wide { grid-column: span 1; }
   }
   .feature img {
     width: 100%;
@@ -100,7 +107,8 @@
     gap: 8px;
   }
   .feature-image-pair img {
-    max-width: 106px;
+    width: 100%;
+    max-width: 200px;
     margin-bottom: 16px;
   }
   .feature h3 {
@@ -194,7 +202,7 @@
     <div class="wrap">
       <h2>できること</h2>
       <div class="features">
-        <div class="feature">
+        <div class="feature feature-wide">
           <div class="feature-image-pair">
             <img src="screenshots/screen-card.png" alt="子どもの情報カード一覧画面">
             <img src="screenshots/screen-card-detail.png" alt="子どもの情報カード詳細画面">
