@@ -3,68 +3,358 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>こそだてバトン サポート</title>
+<title>こそだてバトン ― ママ不在の「もしも」に、パパが迷わず対応できるアプリ</title>
+<meta name="description" content="子どもの情報カード・持ち物チェックリスト・聞きたいことメモを事前に用意しておき、ママが不在の時でもパパが迷わず対応できる育児情報共有アプリ「こそだてバトン」。">
 <style>
   :root {
     color-scheme: light dark;
-  }
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
-    max-width: 640px;
-    margin: 0 auto;
-    padding: 32px 20px 80px;
-    line-height: 1.8;
-    color: #222;
-    background: #FBF5EA;
+    --bg: #FBF5EA;
+    --card-bg: #ffffff;
+    --text: #222;
+    --text-sub: rgba(34,34,34,0.7);
+    --border: rgba(0,0,0,0.08);
+    --blue: #0A7EA4;
+    --orange: #F2994A;
+    --baby: #F6C9A0;
   }
   @media (prefers-color-scheme: dark) {
-    body { color: #eee; background: #1c1c1e; }
-    a { color: #6db8dd; }
-    .card { background: #2c2c2e; }
+    :root {
+      --bg: #1c1c1e;
+      --card-bg: #2c2c2e;
+      --text: #eee;
+      --text-sub: rgba(238,238,238,0.7);
+      --border: rgba(255,255,255,0.08);
+      --blue: #6db8dd;
+      --orange: #F2994A;
+      --baby: #F6C9A0;
+    }
   }
-  h1 { font-size: 1.6rem; margin-bottom: 4px; }
-  .subtitle { opacity: 0.7; margin-top: 0; }
-  h2 { font-size: 1.15rem; margin-top: 40px; }
-  .card {
-    background: #fff;
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", sans-serif;
+    margin: 0;
+    line-height: 1.8;
+    color: var(--text);
+    background: var(--bg);
+  }
+  .wrap { max-width: 880px; margin: 0 auto; padding: 0 20px; position: relative; }
+  body { overflow-x: hidden; }
+
+  .decor {
+    position: absolute;
+    width: 120px;
+    height: auto;
+    pointer-events: none;
+    opacity: 0.95;
+  }
+  .decor-school {
+    bottom: -10px;
+    left: -60px;
+    transform: rotate(-7deg);
+  }
+  .decor-sun {
+    width: 90px;
+    top: -75px;
+    left: -25px;
+    transform: rotate(9deg);
+  }
+  .feature-share,
+  .feature-checklist,
+  .feature-wide {
+    position: relative;
+  }
+  .decor-hospital {
+    width: 100px;
+    top: -30px;
+    right: -30px;
+    transform: rotate(10deg);
+  }
+  .decor-baby {
+    width: 100px;
+    bottom: -30px;
+    right: -70px;
+    transform: rotate(18deg);
+  }
+  .decor-flower {
+    width: 100px;
+    top: -10px;
+    right: -56px;
+    transform: rotate(18deg);
+  }
+  @media (max-width: 900px) {
+    .decor { display: none; }
+  }
+
+  /* Hero */
+  .hero {
+    text-align: center;
+    padding: 56px 20px 40px;
+  }
+  .hero img.icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 22px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.12);
+  }
+  .hero h1 {
+    font-size: 2rem;
+    margin: 20px 0 8px;
+  }
+  .hero p.tagline {
+    font-size: 1.15rem;
+    color: var(--text-sub);
+    margin: 0 0 4px;
+    text-wrap: balance;
+  }
+  .hero p.desc {
+    max-width: 640px;
+    margin: 20px auto 0;
+    color: var(--text-sub);
+    text-wrap: balance;
+  }
+  .hero .family {
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    margin: 32px auto 0;
+    display: block;
+  }
+
+  /* Section headings */
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 28px;
+  }
+  h2::after {
+    content: "";
+    display: block;
+    width: 40px;
+    height: 4px;
+    margin: 12px auto 0;
+    background: var(--blue);
+    border-radius: 999px;
+  }
+  section { padding: 48px 0; }
+  section.alt { background: rgba(10,126,164,0.05); }
+
+  /* Feature grid with phone screenshots */
+  .features {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+  }
+  .feature {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    border: 1px solid var(--border);
+  }
+  .feature-wide {
+    grid-column: span 2;
+  }
+  @media (max-width: 700px) {
+    .features { grid-template-columns: 1fr; }
+    .feature-wide { grid-column: span 1; }
+  }
+  .shot {
+    background: var(--bg);
+    border-radius: 20px;
+    padding: 14px;
+    margin-bottom: 18px;
+  }
+  .shot img {
+    display: block;
+    width: 100%;
+    max-width: 190px;
+    margin: 0 auto;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+  }
+  .feature-image-pair {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  .feature-image-pair img {
+    width: 100%;
+    max-width: 190px;
+  }
+  .feature h3 {
+    margin: 0 0 8px;
+    font-size: 1.1rem;
+  }
+  .feature p {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-sub);
+  }
+
+  /* Points list */
+  .points {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 20px;
+  }
+  .point {
+    background: var(--card-bg);
     border-radius: 16px;
-    padding: 20px 24px;
-    margin: 16px 0;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    padding: 22px 24px;
+    border: 1px solid var(--border);
   }
-  a { color: #0A7EA4; }
-  .contact {
-    font-size: 1.05rem;
+  .point .badge {
+    display: inline-block;
+    font-size: 0.78rem;
     font-weight: 600;
+    padding: 2px 10px;
+    border-radius: 999px;
+    margin-bottom: 10px;
   }
+  .point.dad .badge { background: rgba(10,126,164,0.15); color: var(--blue); }
+  .point.mom .badge { background: rgba(242,153,74,0.18); color: var(--orange); }
+  .point h3 { margin: 0 0 8px; font-size: 1.05rem; }
+  .point p { margin: 0; font-size: 0.95rem; color: var(--text-sub); }
+
+  /* CTA */
+  .cta {
+    text-align: center;
+  }
+  .cta-links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+  .cta-links a {
+    display: inline-block;
+    padding: 12px 22px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+  }
+  .cta-links a.primary {
+    background: var(--blue);
+    color: #fff;
+  }
+  .cta-links a.secondary {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .note {
+    margin-top: 16px;
+    font-size: 0.85rem;
+    color: var(--text-sub);
+  }
+
+  footer {
+    text-align: center;
+    padding: 32px 20px 48px;
+    font-size: 0.82rem;
+    color: var(--text-sub);
+  }
+  footer a { color: inherit; }
 </style>
 </head>
 <body>
-  <h1>こそだてバトン サポート</h1>
-  <p class="subtitle">育児情報共有アプリ「こそだてバトン」に関するお問い合わせ窓口です。</p>
 
-  <h2>お問い合わせ</h2>
-  <div class="card">
-    <p>ご不明点・不具合のご報告などは、以下のメールアドレスまでお願いいたします。</p>
-    <p class="contact"><a href="mailto:feat.entertainment.llc@gmail.com">feat.entertainment.llc@gmail.com</a></p>
-  </div>
+  <div class="hero">
+    <div class="wrap">
+      <img class="icon" src="icon.png" alt="こそだてバトン アイコン">
+      <h1>こそだてバトン</h1>
+      <p class="tagline">ママが不在の「もしも」に、パパが迷わず対応できる共有アプリ。</p>
+      <p class="desc">子どもの情報カード・持ち物チェックリスト・聞きたいことメモを事前に用意しておけば、急な体調不良や通院対応も、あわてず引き継げます。</p>
 
-  <h2>よくあるご質問</h2>
-  <div class="card">
-    <p><strong>Q. データはどこに保存されますか？</strong><br>
-    A. すべてのデータはお使いの端末内にのみ保存されます。サーバーへの送信は行っていません。</p>
-  </div>
-  <div class="card">
-    <p><strong>Q. 共有用パスコードを忘れてしまいました。</strong><br>
-    A. パスコードは端末内にのみ保存されており、運営側で確認・再発行することはできません。恐れ入りますが、共有し直す際に新しいパスコードを双方の端末で設定し直してください。</p>
-  </div>
-  <div class="card">
-    <p><strong>Q. 2人目以降の子どもを登録できません。</strong><br>
-    A. 2人目以降の登録には、アプリ内課金(¥480の買い切り)が必要です。「情報カード」タブの「＋子どもを追加」ボタンから購入手続きができます。</p>
+      <img class="family" src="screenshots/Design-01.png" alt="パパ・ママ・子どものイラスト">
+    </div>
   </div>
 
-  <h2>関連リンク</h2>
-  <p><a href="./home.html">こそだてバトンのホームページ</a></p>
-  <p><a href="./privacy.html">プライバシーポリシー</a></p>
+  <section>
+    <div class="wrap">
+      <h2>できること</h2>
+      <div class="features">
+        <div class="feature feature-wide">
+          <img class="decor decor-sun" src="screenshots/Design-05.png" alt="" aria-hidden="true">
+          <div class="shot">
+            <div class="feature-image-pair">
+              <img src="screenshots/screen-card.png" alt="子どもの情報カード一覧画面">
+              <img src="screenshots/screen-card-detail.png" alt="子どもの情報カード詳細画面">
+            </div>
+          </div>
+          <h3>情報カード</h3>
+          <p>血液型・アレルギー・服薬・かかりつけ病院(Googleマップリンク付き)などを事前登録し、ワンタップで一覧表示。</p>
+        </div>
+        <div class="feature feature-checklist">
+          <img class="decor decor-hospital" src="screenshots/Design-02.png" alt="" aria-hidden="true">
+          <div class="shot">
+            <img src="screenshots/screen-checklist.png" alt="持ち物チェックリスト画面">
+          </div>
+          <h3>持ち物チェックリスト</h3>
+          <p>母子手帳・お薬手帳など、病院に行く時に忘れがちな持ち物と場所を確認。</p>
+        </div>
+        <div class="feature">
+          <div class="shot">
+            <img src="screenshots/screen-memo.png" alt="聞きたいことメモ画面">
+          </div>
+          <h3>聞きたいことメモ</h3>
+          <p>担任の先生や病院の先生に聞いておきたいことを、忘れないうちにメモ。</p>
+        </div>
+        <div class="feature feature-share">
+          <img class="decor decor-baby" src="screenshots/Design-04.png" alt="" aria-hidden="true">
+          <div class="shot">
+            <img src="screenshots/screen-share.png" alt="共有画面">
+          </div>
+          <h3>共有</h3>
+          <p>登録した情報はパスコード付きの暗号化データとして、LINEでコピー&amp;ペースト共有。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <img class="decor decor-school" src="screenshots/Design-03.png" alt="" aria-hidden="true">
+      <h2>安心して使える理由</h2>
+      <div class="points">
+        <div class="point dad">
+          <span class="badge">プライバシー</span>
+          <h3>データは端末内だけに保存</h3>
+          <p>サーバーへの送信は一切なし。共有もパスコードで暗号化されたテキストをLINEでやり取りするだけです。</p>
+        </div>
+        <div class="point mom">
+          <span class="badge">かんたん</span>
+          <h3>いざという時、ワンタップ</h3>
+          <p>普段対応しないパパでも迷わないよう、必要な情報だけをシンプルに一覧表示する設計にしています。</p>
+        </div>
+        <div class="point dad">
+          <span class="badge">料金</span>
+          <h3>1人分は無料、家計にやさしい買い切り</h3>
+          <p>子ども1人分は全機能無料。2人目以降の登録だけ、買い切り(¥480)で解放されます。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta">
+    <div class="wrap">
+      <img class="decor decor-flower" src="screenshots/Design-06.png" alt="" aria-hidden="true">
+      <h2>こそだてバトンをはじめる</h2>
+      <div class="cta-links">
+        <a class="primary" href="https://apps.apple.com/app/id6792291333">App Storeでダウンロード</a>
+        <a class="secondary" href="./support.html">サポート・よくある質問</a>
+        <a class="secondary" href="./privacy.html">プライバシーポリシー</a>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>feat.Entertainment合同会社</p>
+    <p><a href="mailto:feat.entertainment.llc@gmail.com">feat.entertainment.llc@gmail.com</a></p>
+  </footer>
+
 </body>
 </html>
